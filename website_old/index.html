@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>非接触式扭矩测量 | 麟影科技</title>
+  <meta name="description" content="麟影科技 — 您在非接触式扭矩测量和遥测领域的专家。磁弹性扭矩传感器、遥测系统及OEM解决方案。">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #c8102e;
+      --red-dark: #a00c24;
+      --dark: #1a1a1a;
+      --mid: #333;
+      --gray: #555;
+      --light-gray: #f4f4f4;
+      --border: #e0e0e0;
+      --white: #fff;
+      --font: 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--mid); line-height: 1.6; }
+
+    /* ── NAV ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 64px;
+    }
+    .brand {
+      font-size: 1.2rem; font-weight: 800; letter-spacing: .04em;
+      color: var(--dark); text-decoration: none; text-transform: uppercase;
+    }
+    .brand span { color: var(--red); }
+    nav { display: flex; align-items: center; gap: 4px; }
+    nav a {
+      font-size: .82rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .04em; color: var(--dark); text-decoration: none;
+      padding: 8px 12px; border-radius: 4px; transition: color .2s, background .2s;
+    }
+    nav a:hover { color: var(--red); background: #fdf0f2; }
+    .nav-contact-btn {
+      background: var(--red); color: var(--white) !important;
+      padding: 8px 18px; border-radius: 4px; font-weight: 700;
+    }
+    .nav-contact-btn:hover { background: var(--red-dark) !important; color: var(--white) !important; }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 8px; background: none; border: none;
+    }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark); transition: .3s; }
+    .mobile-nav {
+      display: none; flex-direction: column;
+      background: var(--white); border-top: 1px solid var(--border);
+      padding: 16px 24px;
+    }
+    .mobile-nav a {
+      display: block; padding: 10px 0;
+      font-size: .9rem; font-weight: 600; text-transform: uppercase;
+      color: var(--dark); text-decoration: none; border-bottom: 1px solid var(--border);
+    }
+    .mobile-nav.open { display: flex; }
+    @media (max-width: 900px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding-top: 64px;
+      background: var(--dark);
+      color: var(--white);
+      min-height: 560px;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('images/hero-robot.jpg');
+      background-size: cover; background-position: center;
+      opacity: 0.35;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(26,26,26,.8) 0%, rgba(200,16,46,.3) 100%);
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; padding: 80px 24px;
+      position: relative; z-index: 1;
+    }
+    .hero-eyebrow {
+      font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--red); font-weight: 700; margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      font-weight: 900; text-transform: uppercase; letter-spacing: .03em;
+      line-height: 1.15; margin-bottom: 20px; max-width: 700px;
+    }
+    .hero h1 span { color: var(--red); }
+    .hero p {
+      font-size: 1.05rem; max-width: 580px;
+      color: rgba(255,255,255,.8); margin-bottom: 32px;
+    }
+    .hero-cta-group { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-cta {
+      display: inline-block;
+      background: var(--red); color: var(--white);
+      padding: 13px 28px; border-radius: 4px;
+      font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+      text-decoration: none; font-size: .88rem; transition: background .2s;
+    }
+    .hero-cta:hover { background: var(--red-dark); }
+    .hero-cta-outline {
+      display: inline-block;
+      background: transparent; color: var(--white);
+      border: 2px solid rgba(255,255,255,.4);
+      padding: 11px 28px; border-radius: 4px;
+      font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+      text-decoration: none; font-size: .88rem; transition: border-color .2s;
+    }
+    .hero-cta-outline:hover { border-color: var(--white); }
+
+    /* ── STATS BAND ── */
+    .stats-band {
+      background: var(--red); padding: 28px 24px;
+    }
+    .stats-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-around; flex-wrap: wrap; gap: 16px;
+    }
+    .stat-item { text-align: center; color: var(--white); }
+    .stat-val { font-size: 1.8rem; font-weight: 900; letter-spacing: .02em; line-height: 1; }
+    .stat-label { font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; opacity: .85; margin-top: 4px; }
+
+    /* ── ROBOT HERO PRODUCT ── */
+    .robot-hero-product {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+      color: var(--white); padding: 80px 24px;
+      position: relative; overflow: hidden;
+    }
+    .robot-hero-product::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(200,16,46,.15) 0%, transparent 60%);
+    }
+    .rhp-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+      position: relative; z-index: 1;
+    }
+    @media (max-width: 768px) { .rhp-inner { grid-template-columns: 1fr; } }
+    .rhp-badge {
+      display: inline-block;
+      background: var(--red); color: var(--white);
+      font-size: .72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .1em; padding: 5px 12px; border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .rhp-tag {
+      font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--red); font-weight: 700; margin-bottom: 12px;
+    }
+    .rhp-text h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 900; text-transform: uppercase; letter-spacing: .03em;
+      line-height: 1.2; margin-bottom: 16px;
+    }
+    .rhp-text h2 span { color: var(--red); }
+    .rhp-text > p {
+      font-size: .95rem; color: rgba(255,255,255,.75); margin-bottom: 24px;
+    }
+    .rhp-specs {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 28px;
+    }
+    .rhp-spec {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 6px; padding: 12px 14px;
+    }
+    .rhp-spec-val { font-size: 1.3rem; font-weight: 900; color: var(--red); }
+    .rhp-spec-label { font-size: .75rem; color: rgba(255,255,255,.6); text-transform: uppercase; letter-spacing: .06em; }
+    .rhp-price {
+      display: inline-block;
+      background: var(--red); color: var(--white);
+      padding: 10px 24px; border-radius: 4px;
+      font-size: .9rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+      margin-right: 12px;
+    }
+    .rhp-price-note { font-size: .82rem; color: rgba(255,255,255,.6); }
+    .rhp-img-wrap {
+      position: relative; border-radius: 8px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+    .rhp-img-wrap img {
+      width: 100%; height: 380px; object-fit: cover; display: block;
+    }
+    .rhp-img-caption {
+      background: rgba(0,0,0,.7); color: rgba(255,255,255,.8);
+      font-size: .75rem; text-align: center; padding: 8px;
+      position: absolute; bottom: 0; left: 0; right: 0;
+    }
+
+    /* ── SECTION SHARED ── */
+    .section { padding: 80px 24px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-tag {
+      font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--red); font-weight: 700; margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 900; text-transform: uppercase; letter-spacing: .03em;
+      color: var(--dark); margin-bottom: 14px; line-height: 1.2;
+    }
+    .section-subtitle {
+      font-size: .95rem; color: var(--gray); max-width: 680px; margin-bottom: 40px;
+    }
+    .text-center { text-align: center; }
+    .bg-light { background: var(--light-gray); }
+
+    /* ── PRODUCT GRID ── */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .product-card {
+      border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
+      transition: box-shadow .25s, transform .25s; background: var(--white);
+    }
+    .product-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,.1); transform: translateY(-3px); }
+    .product-card-img {
+      height: 200px; overflow: hidden; background: #f0f0f0;
+    }
+    .product-card-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .4s;
+    }
+    .product-card:hover .product-card-img img { transform: scale(1.05); }
+    .product-card-body { padding: 20px; }
+    .product-card-body h3 {
+      font-size: .95rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .04em; color: var(--dark); margin-bottom: 8px;
+    }
+    .product-card-body p { font-size: .85rem; color: var(--gray); line-height: 1.55; }
+    .card-link {
+      display: inline-block; margin-top: 12px;
+      font-size: .8rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .06em; color: var(--red); text-decoration: none;
+      border-bottom: 2px solid transparent; transition: border-color .2s;
+    }
+    .card-link:hover { border-color: var(--red); }
+
+    /* ── SPLIT ── */
+    .split { padding: 80px 24px; }
+    .split-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    }
+    .split-inner.reverse { direction: rtl; }
+    .split-inner.reverse > * { direction: ltr; }
+    @media (max-width: 768px) {
+      .split-inner { grid-template-columns: 1fr; gap: 32px; }
+      .split-inner.reverse { direction: ltr; }
+    }
+    .split-text h2 {
+      font-size: clamp(1.3rem, 2.8vw, 1.9rem);
+      font-weight: 900; text-transform: uppercase; letter-spacing: .03em;
+      color: var(--dark); margin-bottom: 18px; line-height: 1.2;
+    }
+    .split-text p { font-size: .92rem; color: var(--gray); margin-bottom: 14px; }
+    .split-text a {
+      display: inline-block; margin-top: 6px; margin-right: 16px;
+      font-size: .82rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .06em; color: var(--red); text-decoration: none;
+      border-bottom: 2px solid var(--red); padding-bottom: 2px;
+    }
+    .split-visual {
+      border-radius: 6px; overflow: hidden;
+      min-height: 320px;
+    }
+    .split-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ── DARK BAND ── */
+    .dark-band { background: var(--dark); color: var(--white); padding: 80px 24px; }
+    .dark-band .section-title { color: var(--white); }
+    .dark-band .section-subtitle { color: rgba(255,255,255,.65); }
+
+    /* ── TECH TABLE ── */
+    .tech-table-wrap { overflow-x: auto; margin-top: 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+    th {
+      background: var(--red); color: var(--white);
+      padding: 12px 16px; text-align: left;
+      font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+    }
+    td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--mid); }
+    tr:nth-child(even) td { background: var(--light-gray); }
+    .check { color: #22c55e; font-weight: 700; }
+    .cross { color: #ef4444; font-weight: 700; }
+
+    /* ── APPLICATIONS ── */
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px; margin-top: 40px;
+    }
+    .app-card {
+      border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
+      background: var(--white); transition: box-shadow .25s, transform .25s;
+    }
+    .app-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,.1); transform: translateY(-3px); }
+    .app-card-img { height: 170px; overflow: hidden; }
+    .app-card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .app-card-body { padding: 18px; }
+    .app-card-body h3 {
+      font-size: .9rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .04em; color: var(--dark); margin-bottom: 8px;
+    }
+    .app-card-body p { font-size: .82rem; color: var(--gray); }
+
+    /* ── CASE ── */
+    .case-section { background: var(--light-gray); padding: 80px 24px; }
+    .case-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    }
+    @media (max-width: 768px) { .case-inner { grid-template-columns: 1fr; } }
+    .case-visual {
+      border-radius: 6px; overflow: hidden; min-height: 300px;
+    }
+    .case-visual img { width: 100%; height: 100%; object-fit: cover; }
+    .case-text h2 {
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-weight: 900; text-transform: uppercase; letter-spacing: .03em;
+      color: var(--dark); margin-bottom: 18px; line-height: 1.2;
+    }
+    .case-text p { font-size: .92rem; color: var(--gray); margin-bottom: 12px; }
+    .case-text a {
+      display: inline-block; margin-top: 6px;
+      font-size: .82rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .06em; color: var(--red); text-decoration: none;
+      border-bottom: 2px solid var(--red); padding-bottom: 2px;
+    }
+
+    /* ── PRESS ── */
+    .press-list { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
+    .press-item {
+      background: var(--white); border: 1px solid var(--border);
+      border-left: 4px solid var(--red); border-radius: 4px;
+      padding: 16px 20px;
+    }
+    .press-item h4 {
+      font-size: .85rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .03em; color: var(--dark); margin-bottom: 3px;
+    }
+    .press-item span { font-size: .78rem; color: var(--red); font-weight: 600; }
+
+    /* ── CONTACT ── */
+    .contact-section { background: var(--light-gray); padding: 80px 24px; }
+    .contact-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    }
+    @media (max-width: 768px) { .contact-inner { grid-template-columns: 1fr; } }
+    .contact-info h2 {
+      font-size: clamp(1.3rem, 2.8vw, 1.9rem);
+      font-weight: 900; text-transform: uppercase; letter-spacing: .03em;
+      color: var(--dark); margin-bottom: 18px;
+    }
+    .contact-info > p { font-size: .92rem; color: var(--gray); margin-bottom: 28px; }
+    .contact-detail { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; }
+    .contact-icon {
+      width: 40px; height: 40px; background: var(--red); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .contact-icon svg { width: 18px; height: 18px; fill: var(--white); }
+    .contact-detail-text strong { display: block; font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; color: var(--dark); margin-bottom: 2px; font-weight: 700; }
+    .contact-detail-text span { font-size: .92rem; color: var(--gray); }
+    .contact-form { background: var(--white); border-radius: 6px; padding: 32px; box-shadow: 0 4px 16px rgba(0,0,0,.05); }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--dark); margin-bottom: 6px; }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 10px 14px;
+      border: 1px solid var(--border); border-radius: 4px;
+      font-size: .92rem; font-family: var(--font);
+      color: var(--mid); background: var(--white);
+      transition: border-color .2s;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--red); }
+    .form-group textarea { height: 120px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+    .form-submit {
+      width: 100%; padding: 12px;
+      background: var(--red); color: var(--white);
+      border: none; border-radius: 4px; cursor: pointer;
+      font-size: .88rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+      transition: background .2s;
+    }
+    .form-submit:hover { background: var(--red-dark); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--dark); color: rgba(255,255,255,.55); padding: 48px 24px 24px; }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+      padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    @media (max-width: 700px) { .footer-inner { grid-template-columns: 1fr; } }
+    .footer-brand { font-size: 1.1rem; font-weight: 800; color: var(--white); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 12px; }
+    .footer-brand span { color: var(--red); }
+    .footer-desc { font-size: .83rem; line-height: 1.65; }
+    .footer-col h4 { font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--white); margin-bottom: 14px; }
+    .footer-col a { display: block; font-size: .83rem; color: rgba(255,255,255,.55); text-decoration: none; margin-bottom: 9px; transition: color .2s; }
+    .footer-col a:hover { color: var(--red); }
+    .footer-bottom {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 10px; padding-top: 20px;
+      font-size: .78rem;
+    }
+    .footer-bottom-links { display: flex; gap: 0; }
+    .footer-bottom-links a { color: rgba(255,255,255,.35); text-decoration: none; margin-left: 16px; }
+    .footer-bottom-links a:hover { color: var(--red); }
+
+    /* ── ICP 备案 ── */
+    .icp-bar {
+      background: #111;
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 16px 24px;
+    }
+    .icp-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: center; align-items: center;
+      gap: 8px; flex-wrap: wrap;
+    }
+    .icp-text { font-size: .78rem; color: rgba(255,255,255,.4); }
+    .icp-link {
+      font-size: .78rem; color: rgba(255,255,255,.5);
+      text-decoration: none; transition: color .2s;
+    }
+    .icp-link:hover { color: var(--red); }
+    .icp-gov {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 3px; padding: 2px 8px;
+      font-size: .75rem; color: rgba(255,255,255,.5);
+    }
+    .icp-gov img { width: 14px; height: 14px; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header>
+  <div class="nav-inner">
+    <a class="brand" href="#">麟影<span>科技</span></a>
+    <nav>
+      <a href="#products">产品</a>
+      <a href="#technology">技术</a>
+      <a href="#applications">应用领域</a>
+      <a href="#cases">参考案例</a>
+      <a href="#contact" class="nav-contact-btn">联系我们</a>
+    </nav>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="打开菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#products" onclick="toggleMenu()">产品</a>
+    <a href="#technology" onclick="toggleMenu()">技术</a>
+    <a href="#applications" onclick="toggleMenu()">应用领域</a>
+    <a href="#cases" onclick="toggleMenu()">参考案例</a>
+    <a href="#contact" onclick="toggleMenu()">联系我们</a>
+  </div>
+</header>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">麟影科技</div>
+    <h1>您在<span>非接触式扭矩测量</span>和遥测领域的专家</h1>
+    <p>免维护、高精度、易集成——麟影科技的扭矩传感器为各类工业应用提供卓越的非接触式测量解决方案。</p>
+    <div class="hero-cta-group">
+      <a href="#contact" class="hero-cta">了解更多信息</a>
+      <a href="#robot-product" class="hero-cta-outline">机器人传感器 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ STATS ═══════════════ -->
+<div class="stats-band">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-val">300,000</div>
+      <div class="stat-label">最高转速 RPM</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">0.1%</div>
+      <div class="stat-label">测量精度 FS</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">&gt;25 kHz</div>
+      <div class="stat-label">信号带宽</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">1 Nm+</div>
+      <div class="stat-label">扭矩测量范围</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ ROBOT JOINT TORQUE SENSOR (HIGHLIGHT) ═══════════════ -->
+<section class="robot-hero-product" id="robot-product">
+  <div class="rhp-inner">
+    <div class="rhp-text">
+      <div class="rhp-badge">★ 超高性价比</div>
+      <div class="rhp-tag">明星产品 · 重点推荐</div>
+      <h2>机器人关节<span>扭矩传感器</span></h2>
+      <p>专为机器人及外骨骼设计的非接触式扭矩传感器，超小体积、超高性价比。支持关节力矩控制、碰撞检测、拖拽示教及力反馈控制。</p>
+      <div class="rhp-specs">
+        <div class="rhp-spec">
+          <div class="rhp-spec-val">5~500</div>
+          <div class="rhp-spec-label">量程 g·cm ~ N·m</div>
+        </div>
+        <div class="rhp-spec">
+          <div class="rhp-spec-val">0.1%</div>
+          <div class="rhp-spec-label">综合精度 FS</div>
+        </div>
+        <div class="rhp-spec">
+          <div class="rhp-spec-val">&lt;5 mm</div>
+          <div class="rhp-spec-label">轴向厚度</div>
+        </div>
+        <div class="rhp-spec">
+          <div class="rhp-spec-val">IP67</div>
+          <div class="rhp-spec-label">防护等级</div>
+        </div>
+        <div class="rhp-spec">
+          <div class="rhp-spec-val">UART / CAN</div>
+          <div class="rhp-spec-label">通讯接口</div>
+        </div>
+        <div class="rhp-spec">
+          <div class="rhp-spec-val">9月量产</div>
+          <div class="rhp-spec-label">批量交付</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:8px">
+        <a href="#contact" class="rhp-price">获取样品 & 报价</a>
+        <span class="rhp-price-note">支持批量采购 · OEM定制</span>
+      </div>
+    </div>
+    <div class="rhp-img-wrap">
+      <img src="images/robot-joint-sensor.jpg"
+           alt="机器人关节扭矩传感器"
+           onerror="this.src='images/tech-contactless.jpg'">
+      <div class="rhp-img-caption">麟影科技 · 机器人关节扭矩传感器 · 非接触式磁弹性测量</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PRODUCTS ═══════════════ -->
+<section class="section" id="products">
+  <div class="section-inner">
+    <div class="section-tag">产品</div>
+    <h2 class="section-title">产品与服务</h2>
+    <p class="section-subtitle">麟影科技提供覆盖从研发到批量生产全流程的非接触式扭矩测量与遥测解决方案。</p>
+    <div class="product-grid">
+
+      <!-- Card 1 -->
+      <div class="product-card">
+        <div class="product-card-img">
+          <img src="images/sensor-magneto.jpg" alt="磁弹性扭矩传感器">
+        </div>
+        <div class="product-card-body">
+          <h3>磁弹性扭矩传感器</h3>
+          <p>适用于极端条件及系列应用的扭矩传感器。非接触式测量，免维护，可承受最高300,000 RPM转速。</p>
+          <a href="#technology" class="card-link">更多信息 →</a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="product-card">
+        <div class="product-card-img">
+          <img src="images/sensor-telemetry.jpg" alt="遥测与无线产品">
+        </div>
+        <div class="product-card-body">
+          <h3>遥测与无线产品</h3>
+          <p>遥测技术实现扭矩和温度测量的非接触式数据和能量传输，适用于旋转轴、电机和齿轮等应用场景。</p>
+          <a href="#technology" class="card-link">更多信息 →</a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="product-card">
+        <div class="product-card-img">
+          <img src="images/sensor-flange.jpg" alt="测量法兰">
+        </div>
+        <div class="product-card-body">
+          <h3>测量法兰与测量轴</h3>
+          <p>标准扭矩测量法兰和测量轴能够以低投资实现最高精度的测量。精度最高可达0.1% FS。</p>
+          <a href="#technology" class="card-link">更多信息 →</a>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="product-card">
+        <div class="product-card-img">
+          <img src="images/oem-solution.jpg" alt="OEM解决方案">
+        </div>
+        <div class="product-card-body">
+          <h3>OEM 解决方案</h3>
+          <p>为您制造传感器或遥测系统的个性化解决方案，从单件到系列，测量范围超过10,000 Nm。</p>
+          <a href="#contact" class="card-link">更多信息 →</a>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="product-card">
+        <div class="product-card-img">
+          <img src="images/service.jpg" alt="服务">
+        </div>
+        <div class="product-card-body">
+          <h3>服务</h3>
+          <p>从设计到测量系统安装的全面配套服务，包含系统集成、标定和技术支持。</p>
+          <a href="#contact" class="card-link">了解更多 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SPLIT 1 ═══════════════ -->
+<section class="split bg-light" id="technology">
+  <div class="split-inner">
+    <div class="split-text">
+      <div class="section-tag">核心优势</div>
+      <h2>非接触式扭矩测量——轻松实现</h2>
+      <p>非接触式扭矩测量的优势：我们的扭矩传感器免维护，在整个轴使用寿命期间为机器监控和控制提供精确数据。</p>
+      <p>由于轴本身成为传感器系统的一部分，我们的非接触式扭矩测量特别具有成本效益，只需要最小的安装空间。由此，免维护的工业扭矩测量可以无缝集成到几乎任何机器或设备中。</p>
+      <a href="#tech-detail">了解我们的技术</a>
+      <a href="#robot-product">机器人专用传感器 →</a>
+    </div>
+    <div class="split-visual">
+      <img src="images/tech-contactless.jpg" alt="非接触式扭矩测量技术">
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SPLIT 2 ═══════════════ -->
+<section class="split" id="tech-detail">
+  <div class="split-inner reverse">
+    <div class="split-text">
+      <div class="section-tag">传感器技术</div>
+      <h2>免维护且易于集成的扭矩传感器</h2>
+      <p>测量系统免维护，在整个轴使用寿命期间为机器监控和控制提供精确数据。由于轴本身成为传感器系统的一部分，该方案特别适合系列应用，价格低廉且安装空间极小。</p>
+      <p>我们的非接触式扭矩测量系统可灵活适配多种应用场景，从特定工况下的精确扭矩测量，到精准过程控制，乃至协作机器人的碰撞检测，均可胜任。</p>
+      <a href="#contact">欢迎咨询</a>
+      <a href="#applications">应用领域 →</a>
+    </div>
+    <div class="split-visual">
+      <img src="images/robot-joint-sensor.jpg" alt="扭矩传感器集成">
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ APPLICATIONS HEADER ═══════════════ -->
+<div class="dark-band" id="applications">
+  <div class="section-inner text-center">
+    <div class="section-tag" style="color:#ff6b7a">应用领域</div>
+    <h2 class="section-title">从机器控制到预测性维护</h2>
+    <p class="section-subtitle" style="margin:0 auto">麟影科技的传感器技术广泛应用于工业自动化、机器人、汽车、航空航天等多个行业。</p>
+  </div>
+</div>
+
+<!-- ═══════════════ APPLICATIONS GRID ═══════════════ -->
+<section class="section bg-light">
+  <div class="section-inner">
+    <div class="apps-grid">
+
+      <div class="app-card">
+        <div class="app-card-img">
+          <img src="images/robot-joint-sensor.jpg" alt="机器人技术">
+        </div>
+        <div class="app-card-body">
+          <h3>机器人技术</h3>
+          <p>极快的系统响应时间 / 低延迟，支持UART、I2C等通讯协议，适用于旋转和静态测量及碰撞检测。</p>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-card-img">
+          <img src="images/app-automotive.jpg" alt="汽车">
+        </div>
+        <div class="app-card-body">
+          <h3>汽车与赛车运动</h3>
+          <p>可在变速箱内部运行（完全浸没在油中），支持离合器、驱动轴和变速箱扭矩测量。</p>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-card-img">
+          <img src="images/app-racing.jpg" alt="赛车">
+        </div>
+        <div class="app-card-body">
+          <h3>赛车运动</h3>
+          <p>精确测定赛道上的实际驱动功率、车载发动机诊断、精确离合器控制与驾驶行为微调。</p>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-card-img">
+          <img src="images/app-machine.jpg" alt="专用机械">
+        </div>
+        <div class="app-card-body">
+          <h3>设备 / 专用机械</h3>
+          <p>实时测量用于机器和设备控制、过程监控及产品验证；支持质量流量、材料流量和磨损监测。</p>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-card-img">
+          <img src="images/app-offhighway.jpg" alt="工程机械">
+        </div>
+        <div class="app-card-body">
+          <h3>工程机械 / 非公路</h3>
+          <p>适用于建筑机械、农业机械、林业机械，抗振动、防尘、耐温，适合恶劣作业环境。</p>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-card-img">
+          <img src="images/app-process.jpg" alt="流程工业">
+        </div>
+        <div class="app-card-body">
+          <h3>流程工业</h3>
+          <p>从轴扭矩测量推断工艺参数，可测量粘度、流量、稠度、磨损等，实现预测性维护。</p>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-card-img">
+          <img src="images/app-ebike.jpg" alt="健身设备">
+        </div>
+        <div class="app-card-body">
+          <h3>电动自行车 / 健身设备</h3>
+          <p>低成本、可扩展、批量生产能力，IP67防护等级，支持跑步机、动感单车功率测量。</p>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-card-img">
+          <img src="images/app-aviation.jpg" alt="航空航天">
+        </div>
+        <div class="app-card-body">
+          <h3>航空航天</h3>
+          <p>最高精度、最大可靠性、最小重量（仅50-100克），适用于转子轴扭矩测量及测试台应用。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TECHNOLOGY DETAIL ═══════════════ -->
+<section class="section" id="tech-detail2">
+  <div class="section-inner">
+    <div class="section-tag">技术能力</div>
+    <h2 class="section-title">三种创新非接触式测量系统</h2>
+    <p class="section-subtitle">基于磁弹性效应的扭矩测量 · 近场遥测技术的非接触式测量 · 无线测量系统</p>
+
+    <div class="product-grid" style="margin-bottom:40px">
+      <div class="product-card">
+        <div class="product-card-body" style="padding:24px">
+          <h3 style="margin-bottom:8px">磁弹性测量</h3>
+          <p style="font-size:.83rem;color:var(--gray);margin-bottom:10px">测量参数：扭矩、角度、加速度、温度</p>
+          <ul style="font-size:.83rem;color:var(--gray);padding-left:16px;line-height:2">
+            <li>测量距离：&lt; 2 mm</li>
+            <li>采样率：&gt; 25 kHz</li>
+            <li>所需径向空间极小</li>
+            <li>轴上无需额外组件</li>
+            <li>批量产品全自动生产</li>
+          </ul>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-card-body" style="padding:24px">
+          <h3 style="margin-bottom:8px">近场遥测</h3>
+          <p style="font-size:.83rem;color:var(--gray);margin-bottom:10px">测量参数：扭矩、弯曲、轴向力、加速度、角度</p>
+          <ul style="font-size:.83rem;color:var(--gray);padding-left:16px;line-height:2">
+            <li>传输距离：1 - 35 mm</li>
+            <li>无线能量和数据传输</li>
+            <li>采样率：最高 5 kHz</li>
+            <li>适用于所有材料类型</li>
+            <li>适合研究和实验室应用</li>
+          </ul>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-card-body" style="padding:24px">
+          <h3 style="margin-bottom:8px">远程蓝牙方案</h3>
+          <p style="font-size:.83rem;color:var(--gray);margin-bottom:10px">通用无线传输方案</p>
+          <ul style="font-size:.83rem;color:var(--gray);padding-left:16px;line-height:2">
+            <li>传输距离：最远 15 m</li>
+            <li>采样率：最高 500 Hz</li>
+            <li>常规电源或电池供电</li>
+            <li>可连接多种传感器</li>
+            <li>（应变片、加速度、温度等）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size:1rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);margin-bottom:8px">与传统测量方法对比</h3>
+    <div class="tech-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>特性</th>
+            <th>应变片</th>
+            <th>感应式</th>
+            <th>磁弹性（麟影科技）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>非接触式测量</td>
+            <td>旋转时可行</td>
+            <td>需遥测或滑环</td>
+            <td><span class="check">✔ 完全无限制</span></td>
+          </tr>
+          <tr>
+            <td>刚度</td>
+            <td>需弹性软轴</td>
+            <td>受限于扭转应变</td>
+            <td><span class="check">✔ 高刚度范围灵活</span></td>
+          </tr>
+          <tr>
+            <td>尺寸</td>
+            <td>长径比约5:1</td>
+            <td>需较大安装空间</td>
+            <td><span class="check">✔ 轴向&lt;20mm，径向约5mm</span></td>
+          </tr>
+          <tr>
+            <td>信号带宽</td>
+            <td>最高 0.5 kHz</td>
+            <td>最高 1.5 kHz</td>
+            <td><span class="check">✔ 1–2 kHz（特殊应用 25 kHz）</span></td>
+          </tr>
+          <tr>
+            <td>径向安装</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✔</span></td>
+          </tr>
+          <tr>
+            <td>长期稳定性</td>
+            <td>胶粘剂受温度影响</td>
+            <td>—</td>
+            <td><span class="check">✔</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CASE STUDY ═══════════════ -->
+<section class="case-section" id="cases">
+  <div class="case-inner">
+    <div class="case-visual">
+      <img src="images/case-redbull.jpg" alt="传感器应用案例">
+    </div>
+    <div class="case-text">
+      <div class="section-tag">参考案例</div>
+      <h2>麟影科技传感器在实际中的应用</h2>
+      <p>Red Bull KTM Factory Racing车队在采集变速箱中的扭矩和温度时，采用了我们的传感器技术。通过将传感器直接集成到传动系统，实现了对赛事中高动态过程调校的精确测量。</p>
+      <p>此处采用的是我们集成式、性能卓越的嵌入式系统，可按需执行滤波和信号处理算法。</p>
+      <a href="#contact">前往用例与参考案例</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PRESS ═══════════════ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-tag">媒体报道</div>
+    <h2 class="section-title">新闻文章</h2>
+    <div class="press-list">
+      <div class="press-item">
+        <h4>麟影科技：非接触式、适合量产的传动轴扭矩测量</h4>
+        <span>刊载于《电子实践》</span>
+      </div>
+      <div class="press-item">
+        <h4>麟影科技：非接触式扭矩测量——从传动轴到传感器</h4>
+        <span>刊载于《SPS杂志》</span>
+      </div>
+      <div class="press-item">
+        <h4>麟影科技测量法兰：用于现场测量和量产的扭矩测量系统</h4>
+        <span>刊载于《Profi技术杂志》</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-tag">联系我们</div>
+      <h2>获取更多信息</h2>
+      <p>如果您想了解更多关于我们非接触式扭矩测量解决方案的信息，欢迎直接致电或通过电子邮件联系我们。</p>
+
+      <div class="contact-detail">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <div class="contact-detail-text">
+          <strong>公司地址</strong>
+          <span>深圳市南山区</span>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        </div>
+        <div class="contact-detail-text">
+          <strong>联系电话</strong>
+          <span>18098977294</span>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <div class="contact-detail-text">
+          <strong>电子邮件</strong>
+          <span>xiashengpbh@163.com</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h3 style="font-size:.95rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--dark);margin-bottom:22px">发送咨询</h3>
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">姓名</label>
+            <input type="text" id="name" name="name" placeholder="您的姓名" required>
+          </div>
+          <div class="form-group">
+            <label for="company">公司</label>
+            <input type="text" id="company" name="company" placeholder="公司名称">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">电子邮件</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="message">留言</label>
+          <textarea id="message" name="message" placeholder="请描述您的需求..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">发送留言</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ICP 备案 ═══════════════ -->
+<div class="icp-bar">
+  <div class="icp-inner">
+    <span class="icp-text">Copyright © 2025 麟影科技 版权所有</span>
+    <span class="icp-text">|</span>
+    <a class="icp-link" href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow">
+      粤ICP备2026027723号
+    </a>
+  </div>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">麟影<span>科技</span></div>
+      <p class="footer-desc">非接触式扭矩测量与遥测领域的专家。为工业自动化、机器人、汽车及航空航天提供高精度、免维护的传感器解决方案。</p>
+    </div>
+    <div class="footer-col">
+      <h4>产品</h4>
+      <a href="#products">磁弹性扭矩传感器</a>
+      <a href="#products">遥测与无线产品</a>
+      <a href="#products">测量法兰与测量轴</a>
+      <a href="#products">OEM 解决方案</a>
+      <a href="#products">服务</a>
+    </div>
+    <div class="footer-col">
+      <h4>公司</h4>
+      <a href="#technology">技术</a>
+      <a href="#applications">应用领域</a>
+      <a href="#cases">参考案例</a>
+      <a href="#contact">联系我们</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>麟影科技 — 非接触式扭矩测量专家</span>
+    <div class="footer-bottom-links">
+      <a href="#">法律声明</a>
+      <a href="#">隐私政策</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileNav').classList.toggle('open');
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    var btn = e.target.querySelector('.form-submit');
+    btn.textContent = '已发送 ✓';
+    btn.style.background = '#22c55e';
+    setTimeout(function() {
+      btn.textContent = '发送留言';
+      btn.style.background = '';
+      e.target.reset();
+    }, 3000);
+  }
+</script>
+</body>
+</html>
