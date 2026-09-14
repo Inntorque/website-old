@@ -27,9 +27,14 @@ python3 -m http.server 8000 --directory website_old
 
 配置依据：[GitHub Pages 自定义工作流文档](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。
 
+## 自定义域名
+
+正式域名为 `inntorque.com`，DNS 在新网管理；`www.inntorque.com` 指向 `inntorque.github.io`，由 GitHub Pages 跳转到主域名。
+
+域名绑定在仓库 **Settings → Pages → Custom domain** 中管理。本项目使用 GitHub Actions 发布，不依赖源码中的 `CNAME` 文件。
+
 ## 待确定
 
 - 具体文案、图片及其他内容修改。
-- 旧域名、新域名及域名管理平台，以便配置 Pages 自定义域名和 DNS。
 
 当前咨询表单只有前端成功提示，尚未接入实际发送服务。
