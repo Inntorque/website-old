@@ -1,4 +1,4 @@
-# 麟影科技旧版官网
+# 影拓传感旧版官网
 
 网站源码位于 `website_old/index.html`，图片位于 `website_old/images/`。这是静态单页网站，无需安装依赖或构建。
 

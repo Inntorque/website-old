@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>非接触式扭矩测量 | 麟影科技</title>
-  <meta name="description" content="麟影科技 — 您在非接触式扭矩测量和遥测领域的专家。磁弹性扭矩传感器、遥测系统及OEM解决方案。">
+  <title>非接触式扭矩测量 | 影拓传感</title>
+  <meta name="description" content="影拓传感 — 您在非接触式扭矩测量和遥测领域的专家。磁弹性扭矩传感器、遥测系统及OEM解决方案。">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -36,10 +36,13 @@
       padding: 0 24px; height: 64px;
     }
     .brand {
-      font-size: 1.2rem; font-weight: 800; letter-spacing: .04em;
-      color: var(--dark); text-decoration: none; text-transform: uppercase;
+      display: inline-flex; align-items: center; flex-shrink: 0;
+      padding: 10px 0; text-decoration: none;
     }
-    .brand span { color: var(--red); }
+    .brand-logo { display: block; width: 190px; height: auto; }
+    .brand:focus-visible, .footer-brand:focus-visible {
+      outline: 2px solid #0e2d4d; outline-offset: 4px;
+    }
     nav { display: flex; align-items: center; gap: 4px; }
     nav a {
       font-size: .82rem; font-weight: 600; text-transform: uppercase;
@@ -416,8 +419,11 @@
       padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.1);
     }
     @media (max-width: 700px) { .footer-inner { grid-template-columns: 1fr; } }
-    .footer-brand { font-size: 1.1rem; font-weight: 800; color: var(--white); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 12px; }
-    .footer-brand span { color: var(--red); }
+    .footer-brand {
+      display: inline-flex; padding: 10px; margin-bottom: 16px;
+      background: var(--white); border-radius: 4px; text-decoration: none;
+    }
+    .footer-brand:focus-visible { outline-color: var(--white); }
     .footer-desc { font-size: .83rem; line-height: 1.65; }
     .footer-col h4 { font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--white); margin-bottom: 14px; }
     .footer-col a { display: block; font-size: .83rem; color: rgba(255,255,255,.55); text-decoration: none; margin-bottom: 9px; transition: color .2s; }
@@ -464,7 +470,9 @@
 <!-- ═══════════════ HEADER ═══════════════ -->
 <header>
   <div class="nav-inner">
-    <a class="brand" href="#">麟影<span>科技</span></a>
+    <a class="brand" href="#" aria-label="影拓传感首页">
+      <img class="brand-logo" src="images/inntq-logo-bilingual-blue.svg" alt="影拓传感 InntQ." width="1045" height="198">
+    </a>
     <nav>
       <a href="#products">产品</a>
       <a href="#technology">技术</a>
@@ -490,9 +498,9 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow">麟影科技</div>
+    <div class="hero-eyebrow">影拓传感</div>
     <h1>您在<span>非接触式扭矩测量</span>和遥测领域的专家</h1>
-    <p>免维护、高精度、易集成——麟影科技的扭矩传感器为各类工业应用提供卓越的非接触式测量解决方案。</p>
+    <p>免维护、高精度、易集成——影拓传感的扭矩传感器为各类工业应用提供卓越的非接触式测量解决方案。</p>
     <div class="hero-cta-group">
       <a href="#contact" class="hero-cta">了解更多信息</a>
       <a href="#robot-product" class="hero-cta-outline">机器人传感器 →</a>
@@ -565,7 +573,7 @@
       <img src="images/robot-joint-sensor.jpg"
            alt="机器人关节扭矩传感器"
            onerror="this.src='images/tech-contactless.jpg'">
-      <div class="rhp-img-caption">麟影科技 · 机器人关节扭矩传感器 · 非接触式磁弹性测量</div>
+      <div class="rhp-img-caption">影拓传感 · 机器人关节扭矩传感器 · 非接触式磁弹性测量</div>
     </div>
   </div>
 </section>
@@ -575,7 +583,7 @@
   <div class="section-inner">
     <div class="section-tag">产品</div>
     <h2 class="section-title">产品与服务</h2>
-    <p class="section-subtitle">麟影科技提供覆盖从研发到批量生产全流程的非接触式扭矩测量与遥测解决方案。</p>
+    <p class="section-subtitle">影拓传感提供覆盖从研发到批量生产全流程的非接触式扭矩测量与遥测解决方案。</p>
     <div class="product-grid">
 
       <!-- Card 1 -->
@@ -681,7 +689,7 @@
   <div class="section-inner text-center">
     <div class="section-tag" style="color:#ff6b7a">应用领域</div>
     <h2 class="section-title">从机器控制到预测性维护</h2>
-    <p class="section-subtitle" style="margin:0 auto">麟影科技的传感器技术广泛应用于工业自动化、机器人、汽车、航空航天等多个行业。</p>
+    <p class="section-subtitle" style="margin:0 auto">影拓传感的传感器技术广泛应用于工业自动化、机器人、汽车、航空航天等多个行业。</p>
   </div>
 </div>
 
@@ -831,7 +839,7 @@
             <th>特性</th>
             <th>应变片</th>
             <th>感应式</th>
-            <th>磁弹性（麟影科技）</th>
+            <th>磁弹性（影拓传感）</th>
           </tr>
         </thead>
         <tbody>
@@ -885,7 +893,7 @@
     </div>
     <div class="case-text">
       <div class="section-tag">参考案例</div>
-      <h2>麟影科技传感器在实际中的应用</h2>
+      <h2>影拓传感产品的实际应用</h2>
       <p>Red Bull KTM Factory Racing车队在采集变速箱中的扭矩和温度时，采用了我们的传感器技术。通过将传感器直接集成到传动系统，实现了对赛事中高动态过程调校的精确测量。</p>
       <p>此处采用的是我们集成式、性能卓越的嵌入式系统，可按需执行滤波和信号处理算法。</p>
       <a href="#contact">前往用例与参考案例</a>
@@ -900,15 +908,15 @@
     <h2 class="section-title">新闻文章</h2>
     <div class="press-list">
       <div class="press-item">
-        <h4>麟影科技：非接触式、适合量产的传动轴扭矩测量</h4>
+        <h4>影拓传感：非接触式、适合量产的传动轴扭矩测量</h4>
         <span>刊载于《电子实践》</span>
       </div>
       <div class="press-item">
-        <h4>麟影科技：非接触式扭矩测量——从传动轴到传感器</h4>
+        <h4>影拓传感：非接触式扭矩测量——从传动轴到传感器</h4>
         <span>刊载于《SPS杂志》</span>
       </div>
       <div class="press-item">
-        <h4>麟影科技测量法兰：用于现场测量和量产的扭矩测量系统</h4>
+        <h4>影拓传感测量法兰：用于现场测量和量产的扭矩测量系统</h4>
         <span>刊载于《Profi技术杂志》</span>
       </div>
     </div>
@@ -984,7 +992,7 @@
 <!-- ═══════════════ ICP 备案 ═══════════════ -->
 <div class="icp-bar">
   <div class="icp-inner">
-    <span class="icp-text">Copyright © 2025 麟影科技 版权所有</span>
+    <span class="icp-text">Copyright © 2025 影拓传感 版权所有</span>
     <span class="icp-text">|</span>
     <a class="icp-link" href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow">
       粤ICP备2026027723号
@@ -996,7 +1004,9 @@
 <footer>
   <div class="footer-inner">
     <div>
-      <div class="footer-brand">麟影<span>科技</span></div>
+      <a class="footer-brand" href="#" aria-label="影拓传感首页">
+        <img class="brand-logo" src="images/inntq-logo-bilingual-blue.svg" alt="影拓传感 InntQ." width="1045" height="198" loading="lazy">
+      </a>
       <p class="footer-desc">非接触式扭矩测量与遥测领域的专家。为工业自动化、机器人、汽车及航空航天提供高精度、免维护的传感器解决方案。</p>
     </div>
     <div class="footer-col">
@@ -1016,7 +1026,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>麟影科技 — 非接触式扭矩测量专家</span>
+    <span>影拓传感 — 非接触式扭矩测量专家</span>
     <div class="footer-bottom-links">
       <a href="#">法律声明</a>
       <a href="#">隐私政策</a>
