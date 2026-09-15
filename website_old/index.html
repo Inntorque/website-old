@@ -230,6 +230,47 @@
     .text-center { text-align: center; }
     .bg-light { background: var(--light-gray); }
 
+    /* ── ROBOT APPLICATIONS ── */
+    #robot-applications { scroll-margin-top: 80px; }
+    .robot-scenes {
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;
+    }
+    .robot-scene {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 8px; padding: 28px;
+    }
+    .robot-scene-icon {
+      display: flex; align-items: center; justify-content: center;
+      width: 52px; height: 52px; border-radius: 12px;
+      background: #fdf0f2; color: var(--red); margin-bottom: 20px;
+    }
+    .robot-scene-icon svg {
+      width: 32px; height: 32px; fill: none; stroke: currentColor;
+      stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .robot-scene h3 { font-size: 1.1rem; color: var(--dark); margin-bottom: 10px; }
+    .robot-scene p { font-size: .9rem; color: var(--gray); }
+    .robot-scene-use { min-height: 3.2em; margin-bottom: 18px; }
+    .robot-scene-value { border-top: 1px solid var(--border); padding-top: 16px; }
+    .robot-scene-value strong {
+      display: block; color: #0e2d4d; font-size: .78rem; margin-bottom: 6px;
+    }
+    .robot-scenes-cta {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; margin-top: 32px; padding: 24px 28px;
+      background: #0e2d4d; color: var(--white); border-radius: 8px;
+    }
+    .robot-scenes-cta h3 { font-size: 1.05rem; margin-bottom: 6px; }
+    .robot-scenes-cta p { font-size: .88rem; color: rgba(255,255,255,.8); }
+    .robot-scenes-cta a { flex-shrink: 0; }
+    @media (max-width: 1000px) { .robot-scenes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 600px) {
+      .robot-scenes { grid-template-columns: 1fr; }
+      .robot-scene { padding: 24px; }
+      .robot-scene-use { min-height: 0; }
+      .robot-scenes-cta { align-items: flex-start; flex-direction: column; padding: 24px; }
+    }
+
     /* ── PRODUCT GRID ── */
     .product-grid {
       display: grid;
@@ -476,6 +517,7 @@
     </a>
     <nav>
       <a href="#products">产品</a>
+      <a href="#robot-applications">机器人应用</a>
       <a href="#technology">技术</a>
       <a href="#applications">应用领域</a>
       <a href="#cases">参考案例</a>
@@ -487,6 +529,7 @@
   </div>
   <div class="mobile-nav" id="mobileNav">
     <a href="#products" onclick="toggleMenu()">产品</a>
+    <a href="#robot-applications" onclick="toggleMenu()">机器人应用</a>
     <a href="#technology" onclick="toggleMenu()">技术</a>
     <a href="#applications" onclick="toggleMenu()">应用领域</a>
     <a href="#cases" onclick="toggleMenu()">参考案例</a>
@@ -575,6 +618,72 @@
            alt="机器人关节扭矩传感器"
            onerror="this.src='images/tech-contactless.jpg'">
       <div class="rhp-img-caption">影拓传感 · 机器人关节扭矩传感器 · 非接触式磁弹性测量</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ROBOT APPLICATION SCENARIOS ═══════════════ -->
+<section class="section bg-light" id="robot-applications" aria-labelledby="robot-applications-title">
+  <div class="section-inner">
+    <div class="section-tag">机器人应用场景</div>
+    <h2 class="section-title" id="robot-applications-title">感知关节力矩，让机器人动作更从容</h2>
+    <p class="section-subtitle">从人机协作到关节研发，围绕机器人的运动、接触与负载变化，探索扭矩测量在不同任务中的应用。</p>
+    <div class="robot-scenes">
+      <article class="robot-scene">
+        <div class="robot-scene-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32"><path d="M5 27h16M9 27v-5l7-8-5-6M11 8l8-3 5 8M24 13l-3 4m3-4 4 1"/><circle cx="11" cy="8" r="3"/><circle cx="16" cy="14" r="3"/><path d="M21 23h7v4h-7z"/></svg>
+        </div>
+        <h3>协作机器人</h3>
+        <p class="robot-scene-use">面向工位上下料、物料搬运与拖拽示教，关注机械臂与人员、工件之间的接触变化。</p>
+        <p class="robot-scene-value"><strong>扭矩测量的作用</strong>提供关节负载反馈，辅助拖拽示教、柔顺控制与异常接触识别。</p>
+      </article>
+      <article class="robot-scene">
+        <div class="robot-scene-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32"><circle cx="16" cy="5" r="3"/><path d="M11 11h10v9H11zM11 12l-5 5v5m15-10 5 5v5M13 20l-3 8H6m13-8 3 8h4"/><circle cx="13" cy="20" r="1.5"/><circle cx="19" cy="20" r="1.5"/></svg>
+        </div>
+        <h3>人形机器人</h3>
+        <p class="robot-scene-use">覆盖上肢抓取、双臂协同与下肢运动研究，观察多关节动作中的受力与负载分配。</p>
+        <p class="robot-scene-value"><strong>扭矩测量的作用</strong>为关节力矩控制和整机控制算法提供测量数据，辅助动作调试与负载评估。</p>
+      </article>
+      <article class="robot-scene">
+        <div class="robot-scene-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32"><circle cx="15" cy="5" r="3"/><path d="M15 9v8l-5 10M15 17l7 9M15 11l7 5M10 10v8l-5 9m15-10 7 10"/><circle cx="10" cy="18" r="2"/><circle cx="20" cy="17" r="2"/></svg>
+        </div>
+        <h3>助力外骨骼</h3>
+        <p class="robot-scene-use">面向穿戴式助力设备，关注髋、膝、肘等关节在行走、抬举与重复动作中的助力需求。</p>
+        <p class="robot-scene-value"><strong>扭矩测量的作用</strong>测量关节输出与交互力矩，为助力调节、跟随控制和人机交互研究提供反馈。</p>
+      </article>
+      <article class="robot-scene">
+        <div class="robot-scene-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32"><path d="M10 4h12v8H10zM16 12v7m-4-4 4 4 4-4M5 27V17h5v6h12v-6h5v10z"/></svg>
+        </div>
+        <h3>精密装配与插接</h3>
+        <p class="robot-scene-use">面向连接器插接、零件压装与对位装配，关注接触过程中卡滞、偏载等负载变化。</p>
+        <p class="robot-scene-value"><strong>扭矩测量的作用</strong>结合机器人运动模型分析关节力矩变化，辅助接触判断与装配过程监控。</p>
+      </article>
+      <article class="robot-scene">
+        <div class="robot-scene-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32"><path d="m8 5 12 5-4 9-8-4zM12 17l-2 5m-5 0h14M3 28h26M22 18l3-2m-3 6h5m-5 3 3 1"/></svg>
+        </div>
+        <h3>打磨抛光与表面处理</h3>
+        <p class="robot-scene-use">面向曲面打磨、边缘去毛刺和表面抛光，关注工具沿工件运动时的接触与阻力变化。</p>
+        <p class="robot-scene-value"><strong>扭矩测量的作用</strong>提供关节受力反馈，辅助接触状态判断、柔顺轨迹控制与工艺参数调试。</p>
+      </article>
+      <article class="robot-scene">
+        <div class="robot-scene-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32"><circle cx="11" cy="16" r="7"/><circle cx="11" cy="16" r="2"/><path d="M2 16h2m14 0h11M5 25h12m-6-2v2M22 7h7m-7 4h4M23 22l2 2 4-5"/></svg>
+        </div>
+        <h3>关节模组研发与测试</h3>
+        <p class="robot-scene-use">面向电机、减速器与一体化关节的研发台架，记录不同转速、姿态和负载下的输出表现。</p>
+        <p class="robot-scene-value"><strong>扭矩测量的作用</strong>采集输出扭矩与负载变化，辅助传动性能评估、控制调参与产品一致性测试。</p>
+      </article>
+    </div>
+    <div class="robot-scenes-cta">
+      <div>
+        <h3>为您的机器人匹配扭矩测量方案</h3>
+        <p>告诉我们关节结构、量程、安装空间和通讯需求，一起评估适合的集成方式。</p>
+      </div>
+      <a href="#contact" class="hero-cta">咨询机器人应用方案 →</a>
     </div>
   </div>
 </section>
@@ -705,7 +814,8 @@
         </div>
         <div class="app-card-body">
           <h3>机器人技术</h3>
-          <p>极快的系统响应时间 / 低延迟，支持UART、I2C等通讯协议，适用于旋转和静态测量及碰撞检测。</p>
+          <p>面向协作机器人、人形机器人及外骨骼，探索关节力矩反馈、柔顺控制与负载监测的应用。</p>
+          <a href="#robot-applications" class="card-link">查看机器人应用场景 →</a>
         </div>
       </div>
 
@@ -1020,6 +1130,7 @@
     </div>
     <div class="footer-col">
       <h4>公司</h4>
+      <a href="#robot-applications">机器人应用</a>
       <a href="#technology">技术</a>
       <a href="#applications">应用领域</a>
       <a href="#cases">参考案例</a>
