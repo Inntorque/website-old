@@ -1,6 +1,8 @@
 # 影拓传感旧版官网
 
-网站源码位于 `website_old/index.html`，图片位于 `website_old/images/`。这是静态单页网站，无需安装依赖或构建。
+中文版位于 `website_old/index.html`，英文版位于 `website_old/en.html`，图片共用 `website_old/images/`。这是静态网站，无需安装依赖或构建。
+
+右上角的“中文 / EN”按钮用于切换语言。修改产品信息、规格或页面布局时，请同步更新两个 HTML 文件。
 
 ## 本地预览
 
