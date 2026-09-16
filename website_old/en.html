@@ -259,26 +259,28 @@
 
     /* ── ROBOT APPLICATIONS ── */
     #robot-applications { scroll-margin-top: 80px; }
+    #robot-applications .section-tag {
+      font-size: clamp(1.5rem, 2.4vw, 2rem); font-weight: 800;
+      line-height: 1.3; letter-spacing: .04em; text-transform: none;
+      color: #0e2d4d; margin-bottom: 16px;
+    }
     .robot-scenes {
       display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;
     }
     .robot-scene {
+      display: flex; flex-direction: column;
       background: var(--white); border: 1px solid var(--border);
-      border-radius: 8px; padding: 28px;
+      border-radius: 8px; overflow: hidden;
     }
-    .robot-scene-icon {
-      display: flex; align-items: center; justify-content: center;
-      width: 52px; height: 52px; border-radius: 12px;
-      background: #fdf0f2; color: var(--red); margin-bottom: 20px;
+    .robot-scene-image {
+      display: block; width: 100%; height: auto; aspect-ratio: 3 / 2;
+      object-fit: cover; background: #e9edf0;
     }
-    .robot-scene-icon svg {
-      width: 32px; height: 32px; fill: none; stroke: currentColor;
-      stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
-    }
+    .robot-scene-body { display: flex; flex-direction: column; flex: 1; padding: 24px; }
     .robot-scene h3 { font-size: 1.1rem; color: var(--dark); margin-bottom: 10px; }
     .robot-scene p { font-size: .9rem; color: var(--gray); }
     .robot-scene-use { min-height: 3.2em; margin-bottom: 18px; }
-    .robot-scene-value { border-top: 1px solid var(--border); padding-top: 16px; }
+    .robot-scene-value { margin-top: auto; border-top: 1px solid var(--border); padding-top: 16px; }
     .robot-scene-value strong {
       display: block; color: #0e2d4d; font-size: .78rem; margin-bottom: 6px;
     }
@@ -293,7 +295,7 @@
     @media (max-width: 1000px) { .robot-scenes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 600px) {
       .robot-scenes { grid-template-columns: 1fr; }
-      .robot-scene { padding: 24px; }
+      .robot-scene-body { padding: 22px; }
       .robot-scene-use { min-height: 0; }
       .robot-scenes-cta { align-items: flex-start; flex-direction: column; padding: 24px; }
     }
@@ -677,52 +679,52 @@
     <p class="section-subtitle">From human–robot collaboration to joint development, explore how torque measurement supports motion, contact sensing and load monitoring across robotic tasks.</p>
     <div class="robot-scenes">
       <article class="robot-scene">
-        <div class="robot-scene-icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32"><path d="M5 27h16M9 27v-5l7-8-5-6M11 8l8-3 5 8M24 13l-3 4m3-4 4 1"/><circle cx="11" cy="8" r="3"/><circle cx="16" cy="14" r="3"/><path d="M21 23h7v4h-7z"/></svg>
-        </div>
+        <img class="robot-scene-image" src="images/robot-scene-cobot.webp" alt="Illustration of a collaborative robot handling machined parts at a workbench" width="1536" height="1024" loading="lazy" decoding="async">
+        <div class="robot-scene-body">
         <h3>Collaborative robots</h3>
         <p class="robot-scene-use">Monitor interactions between robot arms, people and workpieces during machine tending, material handling and hand-guided teaching.</p>
         <p class="robot-scene-value"><strong>The role of torque measurement</strong>Provide joint load feedback to support hand-guided teaching, compliant control and detection of unexpected contact.</p>
+        </div>
       </article>
       <article class="robot-scene">
-        <div class="robot-scene-icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32"><circle cx="16" cy="5" r="3"/><path d="M11 11h10v9H11zM11 12l-5 5v5m15-10 5 5v5M13 20l-3 8H6m13-8 3 8h4"/><circle cx="13" cy="20" r="1.5"/><circle cx="19" cy="20" r="1.5"/></svg>
-        </div>
+        <img class="robot-scene-image" src="images/robot-scene-humanoid.webp" alt="Illustration of a humanoid robot carrying a parts bin with both arms" width="1536" height="1024" loading="lazy" decoding="async">
+        <div class="robot-scene-body">
         <h3>Humanoid robots</h3>
         <p class="robot-scene-use">Explore grasping, coordinated two-arm manipulation and lower-limb motion, with insight into forces and load distribution across multiple joints.</p>
         <p class="robot-scene-value"><strong>The role of torque measurement</strong>Supply measured data for joint torque and whole-body control algorithms, supporting motion tuning and load evaluation.</p>
+        </div>
       </article>
       <article class="robot-scene">
-        <div class="robot-scene-icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32"><circle cx="15" cy="5" r="3"/><path d="M15 9v8l-5 10M15 17l7 9M15 11l7 5M10 10v8l-5 9m15-10 7 10"/><circle cx="10" cy="18" r="2"/><circle cx="20" cy="17" r="2"/></svg>
-        </div>
+        <img class="robot-scene-image" src="images/robot-scene-exoskeleton.webp" alt="Illustration of a worker wearing an assistive exoskeleton to handle a box" width="1536" height="1024" loading="lazy" decoding="async">
+        <div class="robot-scene-body">
         <h3>Assistive exoskeletons</h3>
         <p class="robot-scene-use">Address assistance needs at the hip, knee and elbow during walking, lifting and repetitive tasks with wearable devices.</p>
         <p class="robot-scene-value"><strong>The role of torque measurement</strong>Measure joint output and interaction torque to inform assistance adjustment, motion tracking and human–machine interaction research.</p>
+        </div>
       </article>
       <article class="robot-scene">
-        <div class="robot-scene-icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32"><path d="M10 4h12v8H10zM16 12v7m-4-4 4 4 4-4M5 27V17h5v6h12v-6h5v10z"/></svg>
-        </div>
+        <img class="robot-scene-image" src="images/robot-scene-assembly.webp" alt="Illustration of a robot gripper aligning an electrical connector for precision assembly" width="1536" height="1024" loading="lazy" decoding="async">
+        <div class="robot-scene-body">
         <h3>Precision assembly & insertion</h3>
         <p class="robot-scene-use">Track load changes caused by jamming or misalignment during connector insertion, press-fitting and precision part assembly.</p>
         <p class="robot-scene-value"><strong>The role of torque measurement</strong>Analyze joint torque changes alongside robot motion models to support contact detection and assembly process monitoring.</p>
+        </div>
       </article>
       <article class="robot-scene">
-        <div class="robot-scene-icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32"><path d="m8 5 12 5-4 9-8-4zM12 17l-2 5m-5 0h14M3 28h26M22 18l3-2m-3 6h5m-5 3 3 1"/></svg>
-        </div>
+        <img class="robot-scene-image" src="images/robot-scene-polishing.webp" alt="Illustration of a robot polishing a metal workpiece" width="1536" height="1024" loading="lazy" decoding="async">
+        <div class="robot-scene-body">
         <h3>Grinding, polishing & finishing</h3>
         <p class="robot-scene-use">Monitor contact and resistance as tools move over workpieces during curved-surface grinding, edge deburring and polishing.</p>
         <p class="robot-scene-value"><strong>The role of torque measurement</strong>Provide joint load feedback to support contact assessment, compliant trajectory control and process tuning.</p>
+        </div>
       </article>
       <article class="robot-scene">
-        <div class="robot-scene-icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32"><circle cx="11" cy="16" r="7"/><circle cx="11" cy="16" r="2"/><path d="M2 16h2m14 0h11M5 25h12m-6-2v2M22 7h7m-7 4h4M23 22l2 2 4-5"/></svg>
-        </div>
+        <img class="robot-scene-image" src="images/robot-scene-testing.webp" alt="Illustration of a joint module, torque transducer and load motor on a test bench" width="1536" height="1024" loading="lazy" decoding="async">
+        <div class="robot-scene-body">
         <h3>Joint module development & testing</h3>
         <p class="robot-scene-use">Characterize motors, reducers and integrated joints on test benches across different speeds, poses and loads.</p>
         <p class="robot-scene-value"><strong>The role of torque measurement</strong>Capture output torque and load changes to support transmission evaluation, controller tuning and product consistency testing.</p>
+        </div>
       </article>
     </div>
     <div class="robot-scenes-cta">
