@@ -306,6 +306,9 @@
       grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
       gap: 24px;
     }
+    #products .product-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    @media (max-width: 1100px) { #products .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 600px) { #products .product-grid { grid-template-columns: 1fr; } }
     .product-card {
       border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
       transition: box-shadow .25s, transform .25s; background: var(--white);
@@ -362,6 +365,9 @@
       min-height: 320px;
     }
     .split-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    #technology .split-visual { min-height: 0; }
+    #technology .split-visual img { height: auto; aspect-ratio: 3 / 2; }
 
     /* ── DARK BAND ── */
     .dark-band { background: var(--dark); color: var(--white); padding: 80px 24px; }
@@ -782,17 +788,6 @@
         </div>
       </div>
 
-      <!-- Card 5 -->
-      <div class="product-card">
-        <div class="product-card-img">
-          <img src="images/service.jpg" alt="Services">
-        </div>
-        <div class="product-card-body">
-          <h3>Services</h3>
-          <p>Comprehensive support from design through measurement system installation, including integration, calibration and technical assistance.</p>
-          <a href="#contact" class="card-link">Explore services →</a>
-        </div>
-      </div>
 
     </div>
   </div>
@@ -810,7 +805,7 @@
       <a href="#robot-product">Sensors for robotics →</a>
     </div>
     <div class="split-visual">
-      <img src="images/tech-contactless.jpg" alt="Non-contact torque measurement technology">
+      <img src="images/tech-contactless-scene.webp" alt="Illustration of non-contact torque measurement on an industrial drive shaft" width="1536" height="1024" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
@@ -1164,7 +1159,6 @@
       <a href="#products">Telemetry & wireless products</a>
       <a href="#products">Torque flanges & shafts</a>
       <a href="#products">Custom solutions</a>
-      <a href="#products">Services</a>
     </div>
     <div class="footer-col">
       <h4>Company</h4>

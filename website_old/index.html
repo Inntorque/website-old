@@ -306,6 +306,9 @@
       grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
       gap: 24px;
     }
+    #products .product-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    @media (max-width: 1100px) { #products .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 600px) { #products .product-grid { grid-template-columns: 1fr; } }
     .product-card {
       border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
       transition: box-shadow .25s, transform .25s; background: var(--white);
@@ -362,6 +365,9 @@
       min-height: 320px;
     }
     .split-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    #technology .split-visual { min-height: 0; }
+    #technology .split-visual img { height: auto; aspect-ratio: 3 / 2; }
 
     /* ── DARK BAND ── */
     .dark-band { background: var(--dark); color: var(--white); padding: 80px 24px; }
@@ -769,17 +775,6 @@
         </div>
       </div>
 
-      <!-- Card 5 -->
-      <div class="product-card">
-        <div class="product-card-img">
-          <img src="images/service.jpg" alt="服务">
-        </div>
-        <div class="product-card-body">
-          <h3>服务</h3>
-          <p>从设计到测量系统安装的全面配套服务，包含系统集成、标定和技术支持。</p>
-          <a href="#contact" class="card-link">了解更多 →</a>
-        </div>
-      </div>
 
     </div>
   </div>
@@ -797,7 +792,7 @@
       <a href="#robot-product">机器人专用传感器 →</a>
     </div>
     <div class="split-visual">
-      <img src="images/tech-contactless.jpg" alt="非接触式扭矩测量技术">
+      <img src="images/tech-contactless-scene.webp" alt="工业传动轴非接触式扭矩测量场景示意" width="1536" height="1024" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
@@ -1151,7 +1146,6 @@
       <a href="#products">遥测与无线产品</a>
       <a href="#products">测量法兰与测量轴</a>
       <a href="#products">定制解决方案</a>
-      <a href="#products">服务</a>
     </div>
     <div class="footer-col">
       <h4>公司</h4>
