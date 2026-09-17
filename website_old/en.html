@@ -47,7 +47,7 @@
     .brand:focus-visible, .footer-brand:focus-visible {
       outline: 2px solid #0e2d4d; outline-offset: 4px;
     }
-    nav { display: flex; align-items: center; gap: 4px; }
+    nav { display: flex; align-items: center; gap: 4px; margin-left: auto; }
     nav a {
       font-size: .82rem; font-weight: 600; text-transform: uppercase;
       letter-spacing: .04em; color: var(--dark); text-decoration: none;
@@ -559,16 +559,10 @@
       <img class="brand-logo" src="images/inntq-logo-bilingual-blue.svg" alt="InntQ. logo" width="1045" height="198">
     </a>
     <nav>
-      <a href="#products">Products</a>
-      <a href="#robot-applications">Robotics</a>
-      <a href="#technology">Technology</a>
-      <a href="#applications">Applications</a>
-      <a href="#cases">Case Studies</a>
       <a href="#contact" class="nav-contact-btn">Contact</a>
     </nav>
     <div class="nav-actions">
-      <div class="language-switch" role="group" aria-label="Select language">
-        <a href="index.html" hreflang="zh-CN" aria-label="Switch to Chinese">ZH</a>
+      <div class="language-switch" role="group" aria-label="Page language">
         <a href="en.html" lang="en" hreflang="en" aria-current="page">EN</a>
       </div>
       <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false">
@@ -577,11 +571,6 @@
     </div>
   </div>
   <div class="mobile-nav" id="mobileNav">
-    <a href="#products" onclick="toggleMenu()">Products</a>
-    <a href="#robot-applications" onclick="toggleMenu()">Robotics</a>
-    <a href="#technology" onclick="toggleMenu()">Technology</a>
-    <a href="#applications" onclick="toggleMenu()">Applications</a>
-    <a href="#cases" onclick="toggleMenu()">Case Studies</a>
     <a href="#contact" onclick="toggleMenu()">Contact</a>
   </div>
 </header>
